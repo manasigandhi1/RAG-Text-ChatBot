@@ -35,6 +35,10 @@ The goal of this project was to understand and implement the foundational compon
 Instead of relying on keyword matching, the system uses vector embeddings and semantic search to identify the most relevant information related to a user's query.
 
 ---
+## Demo
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/r26pQ4R2M5c/0.jpg)](https://www.youtube.com/watch?v=r26pQ4R2M5c)
+
 
 ## 🏗️ Architecture
 
