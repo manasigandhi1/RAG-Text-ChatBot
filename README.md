@@ -1,354 +1,194 @@
-# 🤖 RAG PDF Question Answering System
+# 🔍 RAG Document Retrieval System
 
-> Upload a PDF/text files, ask questions in natural language, and get accurate answers powered by Retrieval-Augmented Generation (RAG), Vector Search, and Large Language Models.
-
----
-
-## 🚀 Project Overview
-
-Traditional LLMs can only answer questions based on their training data and may not have access to your private documents.
-
-This project solves that problem using **Retrieval-Augmented Generation (RAG)**. Users can upload a PDF document, and the application retrieves the most relevant information from the document before generating an answer.
+A Retrieval-Augmented Generation (RAG) prototype that demonstrates the core retrieval layer of a GenAI application using document chunking, embeddings, vector storage, and semantic search.
 
 ---
 
-## 🎯 Problem Statement
+## 📌 Project Overview
 
-Organizations often have large volumes of documents such as:
+Large Language Models can only provide useful answers when they have access to relevant information. Retrieval-Augmented Generation (RAG) solves this problem by retrieving the most relevant content from a knowledge base before generating a response.
 
-* Employee Handbooks
-* Insurance Policies
-* Company SOPs
-* Research Papers
-* Product Documentation
-* Legal Agreements
+This project focuses on building and validating the **retrieval component** of a RAG pipeline.
 
-Finding specific information manually can be time-consuming.
+The system successfully:
 
-This application enables users to:
+✅ Loads document data
 
-✅ Upload PDF documents
+✅ Splits documents into meaningful chunks
 
-✅ Ask questions in plain English
+✅ Converts chunks into vector embeddings
 
-✅ Retrieve relevant content using semantic search
+✅ Stores embeddings in a vector database
 
-✅ Generate context-aware answers using an LLM
+✅ Performs semantic similarity search
+
+✅ Retrieves the most relevant chunks for a user query
+
+✅ Displays results through a simple user interface
 
 ---
 
-## 🏗️ System Architecture
+## 🎯 Objective
+
+The goal of this project was to understand and implement the foundational components of a RAG architecture.
+
+Instead of relying on keyword matching, the system uses vector embeddings and semantic search to identify the most relevant information related to a user's query.
+
+---
+
+## 🏗️ Architecture
 
 ```text
-                📄 PDF Document
-                        │
-                        ▼
-              📚 Document Loader
-                        │
-                        ▼
-               ✂️ Text Chunking
-                        │
-                        ▼
-             🔢 Generate Embeddings
-                        │
-                        ▼
-            🗄️ Chroma Vector Database
-                        │
-                        ▼
-               🔍 Similarity Search
-                        │
-                        ▼
-                📑 Relevant Chunks
-                        │
-                        ▼
-                  🤖 LLM (GPT)
-                        │
-                        ▼
-                 💬 Final Answer
+Document
+    ↓
+Document Loading
+    ↓
+Text Chunking
+    ↓
+Embedding Generation
+    ↓
+Chroma Vector Database
+    ↓
+Similarity Search
+    ↓
+Relevant Chunks Retrieved
+    ↓
+Displayed to User
 ```
 
 ---
 
-## ⚙️ Tech Stack
+## ⚙️ Technologies Used
 
-| Component            | Technology        |
-| -------------------- | ----------------- |
-| Programming Language | Python            |
-| Framework            | LangChain         |
-| Frontend             | Streamlit         |
-| Embeddings           | OpenAI Embeddings |
-| Vector Database      | ChromaDB          |
-| LLM                  | OpenAI GPT        |
-| PDF Processing       | PyPDF             |
-| Version Control      | Git & GitHub      |
+* Python
+* LangChain
+* ChromaDB
+* Text Embeddings
+* Semantic Search
+* Vector Databases
 
 ---
 
-## 🧠 Key Concepts Demonstrated
+## 🔄 Workflow
 
-This project showcases practical implementation of:
+### 1️⃣ Load Document
 
-* Retrieval-Augmented Generation (RAG)
-* Vector Databases
-* Embeddings
-* Semantic Search
-* Similarity Retrieval
-* Prompt Engineering
-* Large Language Models
-* LangChain Pipelines
+The application reads document content and prepares it for processing.
+
+### 2️⃣ Chunk the Text
+
+Large text is divided into smaller chunks to improve retrieval accuracy and context relevance.
+
+### 3️⃣ Generate Embeddings
+
+Each chunk is converted into a numerical vector representation that captures semantic meaning.
+
+### 4️⃣ Store in ChromaDB
+
+The generated embeddings are stored in a vector database for efficient retrieval.
+
+### 5️⃣ Query Processing
+
+When a user enters a question, the query is converted into an embedding.
+
+### 6️⃣ Similarity Search
+
+The system compares the query embedding with stored document embeddings.
+
+### 7️⃣ Retrieve Relevant Content
+
+The most semantically similar chunks are returned and displayed to the user.
+
+---
+
+## 💡 Example Queries
+
+* What is Retrieval-Augmented Generation?
+* Explain vector databases.
+* What is semantic search?
+* How are embeddings used in AI applications?
+* What are the benefits of chunking?
+
+---
+
+## 📊 Key Learnings
+
+Through this project, I gained practical experience with:
+
+* RAG architecture fundamentals
+* Document chunking strategies
+* Embedding generation
+* Vector databases
+* Semantic similarity search
+* LangChain workflow design
+* Retrieval pipelines used in modern GenAI systems
+
+---
+
+## 🚀 Current Scope
+
+This project successfully demonstrates the retrieval layer of a RAG system.
+
+The retrieved document chunks can be used as contextual input for a Large Language Model (LLM) in a complete end-to-end RAG application.
+
+Future iterations can extend this implementation by integrating response generation and conversational capabilities on top of the existing retrieval pipeline.
 
 ---
 
 ## 📂 Project Structure
 
 ```text
-rag-pdf-chatbot/
+rag-document-retrieval/
+
 │
 ├── app.py
 ├── requirements.txt
 ├── README.md
 │
 ├── sample_data/
-│   └── sample_document.pdf
+│   └── sample_document.txt
 │
 ├── screenshots/
-│   ├── home.png
-│   ├── upload_pdf.png
-│   └── answer_generation.png
+│   ├── ui.png
+│   └── retrieval_results.png
 │
-├── docs/
-│   ├── architecture.md
-│   └── project_report.md
-│
-└── .gitignore
+└── architecture.png
 ```
-
----
-
-## 🔄 Workflow
-
-### Step 1️⃣ Upload PDF
-
-User uploads a PDF document.
-
-### Step 2️⃣ Extract Text
-
-The application reads and extracts text from the PDF.
-
-### Step 3️⃣ Split into Chunks
-
-The document is divided into smaller chunks for efficient retrieval.
-
-### Step 4️⃣ Generate Embeddings
-
-Each chunk is converted into vector embeddings.
-
-### Step 5️⃣ Store in ChromaDB
-
-Embeddings are stored in a vector database.
-
-### Step 6️⃣ Ask Questions
-
-User enters a question.
-
-### Step 7️⃣ Retrieve Relevant Chunks
-
-Similarity search identifies the most relevant content.
-
-### Step 8️⃣ Generate Response
-
-Retrieved context is passed to the LLM to generate a final answer.
-
----
-
-## 💻 Installation
-
-### Clone Repository
-
-```bash
-git clone https://github.com/yourusername/rag-pdf-chatbot.git
-
-cd rag-pdf-chatbot
-```
-
-### Create Virtual Environment
-
-```bash
-python -m venv venv
-```
-
-### Activate Environment
-
-Windows:
-
-```bash
-venv\Scripts\activate
-```
-
-Mac/Linux:
-
-```bash
-source venv/bin/activate
-```
-
-### Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### Add OpenAI API Key
-
-Create a `.env` file:
-
-```text
-OPENAI_API_KEY=your_api_key
-```
-
-### Run Application
-
-```bash
-streamlit run app.py
-```
-
----
-
-## 📋 Example Questions
-
-Try asking:
-
-### Employee Handbook
-
-* What is the leave policy?
-* How many annual leaves are allowed?
-* What are the working hours?
-
-### Insurance Policy
-
-* What is covered under hospitalization benefits?
-* What exclusions are mentioned?
-* What is the claim process?
-
-### Research Paper
-
-* Summarize the paper.
-* What methodology was used?
-* What are the key findings?
 
 ---
 
 ## 📸 Screenshots
 
-### Home Screen
+### User Interface
+<img width="1279" height="601" alt="image" src="https://github.com/user-attachments/assets/98a718b3-e477-45ce-8897-8c014c882b8e" />
 
-📷 Add screenshot here
+### Retrieval Results
 
-### Upload PDF
+<img width="1274" height="664" alt="image" src="https://github.com/user-attachments/assets/ba8a3811-2fba-4fcc-a526-be5374b10eee" />
 
-📷 Add screenshot here
-
-### Ask Questions
-
-📷 Add screenshot here
-
-### Generated Response
-
-📷 Add screenshot here
 
 ---
 
-## 📊 Challenges Faced
+## 🎓 Resume Highlights
 
-### Chunk Size Optimization
+**RAG Document Retrieval System**
 
-Choosing the correct chunk size to balance retrieval quality and context coverage.
-
-### Retrieval Accuracy
-
-Improving relevance of retrieved documents.
-
-### Hallucinations
-
-Reducing incorrect answers generated by the LLM.
-
-### Context Window Limitations
-
-Managing token limits effectively.
-
----
-
-## 🚀 Future Enhancements
-
-* 📚 Multi-PDF Support
-* 💬 Conversational Memory
-* 🔗 Source Citations
-* 🏷️ Metadata Filtering
-* 🔍 Hybrid Search (Keyword + Vector Search)
-* 🤖 Local LLM Integration (Llama, Mistral)
-* ☁️ Cloud Deployment
-* 📈 Usage Analytics Dashboard
-
----
-
-## 🎓 Learning Outcomes
-
-Through this project, I gained hands-on experience with:
-
-* End-to-End RAG Pipelines
-* LangChain Framework
-* Vector Databases
-* Embedding Models
-* Prompt Engineering
-* Semantic Search
-* Streamlit Application Development
-* Generative AI Application Design
-
----
-
-## 📈 Resume Highlights
-
-**RAG-Based PDF Question Answering System**
-
-* Developed an end-to-end Retrieval-Augmented Generation (RAG) application using Python, LangChain, ChromaDB, and OpenAI.
-* Implemented document ingestion, chunking, embedding generation, vector storage, and semantic retrieval.
-* Built an interactive Streamlit application for PDF-based question answering.
-* Improved answer relevance through vector similarity search and contextual retrieval.
-* Demonstrated practical understanding of LLM application architecture and RAG workflows.
-
----
-
-## 🌟 Sample Use Cases
-
-🏢 Enterprise Knowledge Base
-
-📜 Policy & Compliance Documents
-
-🏥 Healthcare Documentation
-
-🎓 Educational Content
-
-📚 Research Papers
-
-⚖️ Legal Documents
-
-💼 Internal Company SOPs
+* Developed a retrieval pipeline using LangChain and ChromaDB to perform semantic document search.
+* Implemented document loading, chunking, embedding generation, and vector storage workflows.
+* Built a user interface for querying documents and retrieving contextually relevant information.
+* Demonstrated practical understanding of vector databases, embeddings, and Retrieval-Augmented Generation (RAG) concepts.
+* Established a foundation for extending the system into a complete end-to-end GenAI application.
 
 ---
 
 ## 👩‍💻 Author
 
-**Manasi Gandhi**
+[Manasi Gandhi](https://manasigandhiportfolio.lovable.app/)
 
-📊 Data Analyst | Generative AI Enthusiast
+**Data Analyst | Generative AI Learner | Tableau | SQL | Excel | Dashboard Development**
 
-🔗 GitHub: https://github.com/manasigandhi1
-
-🔗 LinkedIn: https://www.linkedin.com/in/manasi-gandhi-309081132/
-
-🔗 Portfolio: https://manasigandhiportfolio.lovable.app/
+ 
 
 ---
 
-## ⭐ If you found this project useful
-
-Please consider giving the repository a ⭐ on GitHub!
+⭐ If you found this project interesting, feel free to explore the code and share feedback.
