@@ -1,0 +1,354 @@
+# 🤖 RAG PDF Question Answering System
+
+> Upload a PDF/text files, ask questions in natural language, and get accurate answers powered by Retrieval-Augmented Generation (RAG), Vector Search, and Large Language Models.
+
+---
+
+## 🚀 Project Overview
+
+Traditional LLMs can only answer questions based on their training data and may not have access to your private documents.
+
+This project solves that problem using **Retrieval-Augmented Generation (RAG)**. Users can upload a PDF document, and the application retrieves the most relevant information from the document before generating an answer.
+
+---
+
+## 🎯 Problem Statement
+
+Organizations often have large volumes of documents such as:
+
+* Employee Handbooks
+* Insurance Policies
+* Company SOPs
+* Research Papers
+* Product Documentation
+* Legal Agreements
+
+Finding specific information manually can be time-consuming.
+
+This application enables users to:
+
+✅ Upload PDF documents
+
+✅ Ask questions in plain English
+
+✅ Retrieve relevant content using semantic search
+
+✅ Generate context-aware answers using an LLM
+
+---
+
+## 🏗️ System Architecture
+
+```text
+                📄 PDF Document
+                        │
+                        ▼
+              📚 Document Loader
+                        │
+                        ▼
+               ✂️ Text Chunking
+                        │
+                        ▼
+             🔢 Generate Embeddings
+                        │
+                        ▼
+            🗄️ Chroma Vector Database
+                        │
+                        ▼
+               🔍 Similarity Search
+                        │
+                        ▼
+                📑 Relevant Chunks
+                        │
+                        ▼
+                  🤖 LLM (GPT)
+                        │
+                        ▼
+                 💬 Final Answer
+```
+
+---
+
+## ⚙️ Tech Stack
+
+| Component            | Technology        |
+| -------------------- | ----------------- |
+| Programming Language | Python            |
+| Framework            | LangChain         |
+| Frontend             | Streamlit         |
+| Embeddings           | OpenAI Embeddings |
+| Vector Database      | ChromaDB          |
+| LLM                  | OpenAI GPT        |
+| PDF Processing       | PyPDF             |
+| Version Control      | Git & GitHub      |
+
+---
+
+## 🧠 Key Concepts Demonstrated
+
+This project showcases practical implementation of:
+
+* Retrieval-Augmented Generation (RAG)
+* Vector Databases
+* Embeddings
+* Semantic Search
+* Similarity Retrieval
+* Prompt Engineering
+* Large Language Models
+* LangChain Pipelines
+
+---
+
+## 📂 Project Structure
+
+```text
+rag-pdf-chatbot/
+│
+├── app.py
+├── requirements.txt
+├── README.md
+│
+├── sample_data/
+│   └── sample_document.pdf
+│
+├── screenshots/
+│   ├── home.png
+│   ├── upload_pdf.png
+│   └── answer_generation.png
+│
+├── docs/
+│   ├── architecture.md
+│   └── project_report.md
+│
+└── .gitignore
+```
+
+---
+
+## 🔄 Workflow
+
+### Step 1️⃣ Upload PDF
+
+User uploads a PDF document.
+
+### Step 2️⃣ Extract Text
+
+The application reads and extracts text from the PDF.
+
+### Step 3️⃣ Split into Chunks
+
+The document is divided into smaller chunks for efficient retrieval.
+
+### Step 4️⃣ Generate Embeddings
+
+Each chunk is converted into vector embeddings.
+
+### Step 5️⃣ Store in ChromaDB
+
+Embeddings are stored in a vector database.
+
+### Step 6️⃣ Ask Questions
+
+User enters a question.
+
+### Step 7️⃣ Retrieve Relevant Chunks
+
+Similarity search identifies the most relevant content.
+
+### Step 8️⃣ Generate Response
+
+Retrieved context is passed to the LLM to generate a final answer.
+
+---
+
+## 💻 Installation
+
+### Clone Repository
+
+```bash
+git clone https://github.com/yourusername/rag-pdf-chatbot.git
+
+cd rag-pdf-chatbot
+```
+
+### Create Virtual Environment
+
+```bash
+python -m venv venv
+```
+
+### Activate Environment
+
+Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+Mac/Linux:
+
+```bash
+source venv/bin/activate
+```
+
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Add OpenAI API Key
+
+Create a `.env` file:
+
+```text
+OPENAI_API_KEY=your_api_key
+```
+
+### Run Application
+
+```bash
+streamlit run app.py
+```
+
+---
+
+## 📋 Example Questions
+
+Try asking:
+
+### Employee Handbook
+
+* What is the leave policy?
+* How many annual leaves are allowed?
+* What are the working hours?
+
+### Insurance Policy
+
+* What is covered under hospitalization benefits?
+* What exclusions are mentioned?
+* What is the claim process?
+
+### Research Paper
+
+* Summarize the paper.
+* What methodology was used?
+* What are the key findings?
+
+---
+
+## 📸 Screenshots
+
+### Home Screen
+
+📷 Add screenshot here
+
+### Upload PDF
+
+📷 Add screenshot here
+
+### Ask Questions
+
+📷 Add screenshot here
+
+### Generated Response
+
+📷 Add screenshot here
+
+---
+
+## 📊 Challenges Faced
+
+### Chunk Size Optimization
+
+Choosing the correct chunk size to balance retrieval quality and context coverage.
+
+### Retrieval Accuracy
+
+Improving relevance of retrieved documents.
+
+### Hallucinations
+
+Reducing incorrect answers generated by the LLM.
+
+### Context Window Limitations
+
+Managing token limits effectively.
+
+---
+
+## 🚀 Future Enhancements
+
+* 📚 Multi-PDF Support
+* 💬 Conversational Memory
+* 🔗 Source Citations
+* 🏷️ Metadata Filtering
+* 🔍 Hybrid Search (Keyword + Vector Search)
+* 🤖 Local LLM Integration (Llama, Mistral)
+* ☁️ Cloud Deployment
+* 📈 Usage Analytics Dashboard
+
+---
+
+## 🎓 Learning Outcomes
+
+Through this project, I gained hands-on experience with:
+
+* End-to-End RAG Pipelines
+* LangChain Framework
+* Vector Databases
+* Embedding Models
+* Prompt Engineering
+* Semantic Search
+* Streamlit Application Development
+* Generative AI Application Design
+
+---
+
+## 📈 Resume Highlights
+
+**RAG-Based PDF Question Answering System**
+
+* Developed an end-to-end Retrieval-Augmented Generation (RAG) application using Python, LangChain, ChromaDB, and OpenAI.
+* Implemented document ingestion, chunking, embedding generation, vector storage, and semantic retrieval.
+* Built an interactive Streamlit application for PDF-based question answering.
+* Improved answer relevance through vector similarity search and contextual retrieval.
+* Demonstrated practical understanding of LLM application architecture and RAG workflows.
+
+---
+
+## 🌟 Sample Use Cases
+
+🏢 Enterprise Knowledge Base
+
+📜 Policy & Compliance Documents
+
+🏥 Healthcare Documentation
+
+🎓 Educational Content
+
+📚 Research Papers
+
+⚖️ Legal Documents
+
+💼 Internal Company SOPs
+
+---
+
+## 👩‍💻 Author
+
+**Manasi Gandhi**
+
+📊 Data Analyst | Generative AI Enthusiast
+
+🔗 GitHub: https://github.com/manasigandhi1
+
+🔗 LinkedIn: https://www.linkedin.com/in/manasi-gandhi-309081132/
+
+🔗 Portfolio: https://manasigandhiportfolio.lovable.app/
+
+---
+
+## ⭐ If you found this project useful
+
+Please consider giving the repository a ⭐ on GitHub!
